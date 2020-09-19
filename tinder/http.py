@@ -11,10 +11,10 @@ from tinder.exceptions import *
 class Http:
     _base_url = "https://api.gotinder.com"
     _headers = {
-        'platform': 'web',
+        "platform": "web",
         "User-agent": "Python/{0[0]}.{0[1]}.{0[2]} requests/{1}".format(sys.version_info, requests.__version__),
         "Accept": "application/json",
-        "X-Auth-Token": ""
+        "X-Auth-Token": "",
     }
 
     def __init__(self, auth_token: str):
