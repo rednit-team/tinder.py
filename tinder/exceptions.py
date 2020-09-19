@@ -1,14 +1,18 @@
-class Unauthorized(Exception):
+class TinderException(Exception):
     pass
 
 
-class Forbidden(Exception):
+class Unauthorized(TinderException):
     pass
 
 
-class NotFound(Exception):
+class Forbidden(TinderException):
     pass
 
 
-class RequestFailed(Exception):
+class NotFound(TinderException):
+    pass
+
+
+class RequestFailed(TinderException):
     pass

@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List, Tuple
+from typing import Tuple
 
 from tinder.entities.entity import Entity
 from tinder.http import Http
@@ -30,7 +30,7 @@ class User(Entity):
         if "spotify_theme_track" in user:
             self.theme_track: Track = Track(user["spotify_theme_track"])
 
-        if "instagram" in user:
+        if "photos" in user["instagram"]:
             self.instagram_info: InstagramInfo = InstagramInfo(user["instagram"])
 
     def distance_mi(self):
