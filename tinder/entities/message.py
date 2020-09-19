@@ -4,9 +4,8 @@ from tinder.http import Http
 
 
 class Message(Entity):
-
     def __init__(self, http: Http, message: dict):
-        super().__init__(http,  message["_id"])
+        super().__init__(http, message["_id"])
         self._match_id = message["match_id"]
         self.content = message["message"]
         self.receiver_id = message["to"]
@@ -33,4 +32,3 @@ class Message(Entity):
         route = "/v2/matches/" + self._match_id
         response = self._http.get(route).json()
         return match.Match(self._http, response["data"])
-

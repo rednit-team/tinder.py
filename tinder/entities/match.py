@@ -4,7 +4,6 @@ from tinder.http import Http
 
 
 class Match(entity.Entity):
-
     def __init__(self, http: Http, match: dict):
         super().__init__(http, match["_id"])
         self.closed = match["closed"]

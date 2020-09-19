@@ -7,7 +7,6 @@ from tinder.entities.user import User
 
 
 class Tinder:
-
     def __init__(self, auth_token: str):
         self._http = Http(auth_token)
 
