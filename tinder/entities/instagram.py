@@ -2,7 +2,6 @@ from typing import Tuple
 
 
 class InstagramInfo:
-
     def __init__(self, instagram: dict):
         self.last_fetch_time = instagram["last_fetch_time"]
         self.completed_initial_fetch = instagram["completed_initial_fetch"]
@@ -15,7 +14,6 @@ class InstagramInfo:
 
 
 class InstagramPhoto:
-
     def __init__(self, photo: dict):
         self.image = photo["image"]
         self.thumbnail = photo["thumbnail"]

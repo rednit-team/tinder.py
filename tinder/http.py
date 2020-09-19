@@ -7,11 +7,11 @@ from random import random
 class Http:
     _base_url = "https://api.gotinder.com"
     _headers = {
-        'platform': 'web',
+        "platform": "web",
         "User-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/85.0.4183.102 Safari/537.36",
+        "Chrome/85.0.4183.102 Safari/537.36",
         "Accept": "application/json",
-        "X-Auth-Token": ""
+        "X-Auth-Token": "",
     }
 
     def __init__(self, auth_token: str):

@@ -1,5 +1,4 @@
 class Album:
-
     def __init__(self, album: dict):
         self.album_id = album["id"]
         self.name = album["name"]
@@ -13,7 +12,6 @@ class Album:
 
 
 class Track:
-
     def __init__(self, track: dict):
         self.track_id = track["id"]
         self.name = track["name"]
@@ -23,7 +21,6 @@ class Track:
 
 
 class TopArtist:
-
     def __init__(self, artist: dict):
         self.artist_id = artist["id"]
         self.name = artist["name"]
