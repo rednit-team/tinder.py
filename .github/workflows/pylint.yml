@@ -19,4 +19,4 @@ jobs:
         pip install black
     - name: Use Black as linter
       run: |
-        black tinder/ -t py38 -l 120 --diff --check
+        black tinder/ -t py38 -l 100 --diff --check
