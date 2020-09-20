@@ -1,18 +1,18 @@
 import sys
 import time
-
 from random import random
 
 import requests
 
-from tinder.exceptions import *
+from tinder.exceptions import Unauthorized, Forbidden, NotFound, RequestFailed
 
 
 class Http:
     _base_url = "https://api.gotinder.com"
     _headers = {
         "platform": "web",
-        "User-agent": "Python/{0[0]}.{0[1]}.{0[2]} requests/{1}".format(sys.version_info, requests.__version__),
+        "User-agent": "Python/{0[0]}.{0[1]}.{0[2]} requests/{1}"
+        .format(sys.version_info, requests.__version__),
         "Accept": "application/json",
         "X-Auth-Token": "",
     }
@@ -31,10 +31,6 @@ class Http:
 
     def delete(self, route: str) -> requests.Response:
         return self._make_request("DELETE", route)
-
-    def fix(self):
-        data = {"message": "Test"}
-        self._make_request("POST", "/like/5f5fa4e88a49eb010099be13")
 
     def _make_request(self, method: str, route: str, **kwargs) -> requests.Response:
         url = self._base_url + route

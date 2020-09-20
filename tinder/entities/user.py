@@ -8,6 +8,15 @@ from tinder.entities.instagram import InstagramInfo
 
 
 class User(Entity):
+    __slots__ = ["name",
+                 "age",
+                 "bio",
+                 "_distance",
+                 "photos",
+                 "spotify_top_artists",
+                 "theme_track",
+                 "instagram_info"]
+
     def __init__(self, http: Http, user: dict):
         super().__init__(http, user["_id"])
         self.name = user["name"].strip()

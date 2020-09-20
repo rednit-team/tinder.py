@@ -1,9 +1,25 @@
 from typing import Tuple
+
 from tinder.entities import entity, user, message
 from tinder.http import Http
 
 
 class Match(entity.Entity):
+    __slots__ = ["closed",
+                 "common_friend_count",
+                 "common_like_count",
+                 "created_date",
+                 "dead",
+                 "last_activity_date",
+                 "pending",
+                 "is_super_like",
+                 "is_boost_match",
+                 "is_super_boost_match",
+                 "is_experiences_match",
+                 "is_fast_match",
+                 "is_opener",
+                 "_user_id"]
+
     def __init__(self, http: Http, match: dict):
         super().__init__(http, match["_id"])
         self.closed = match["closed"]
@@ -31,7 +47,9 @@ class Match(entity.Entity):
         response = self._http.post(route, {"message": content}).json()
         return message.Message(self._http, response)
 
-    def retrieve_messages(self, count: int = 60, page_token: str = None) -> Tuple[message.Message, ...]:
+    def retrieve_messages(self,
+                          count: int = 60,
+                          page_token: str = None) -> Tuple[message.Message, ...]:
         route = "/v2/matches/{}/messages?count={}".format(self.entity_id, count)
         if page_token:
             route = route + "&page_token=" + page_token

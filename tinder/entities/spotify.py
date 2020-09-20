@@ -1,4 +1,6 @@
 class Album:
+    __slots__ = ["album_id", "name", "_images"]
+
     def __init__(self, album: dict):
         self.album_id = album["id"]
         self.name = album["name"]
@@ -12,6 +14,8 @@ class Album:
 
 
 class Track:
+    __slots__ = ["track_id", "name", "album", "preview_url", "uri"]
+
     def __init__(self, track: dict):
         self.track_id = track["id"]
         self.name = track["name"]
@@ -21,6 +25,8 @@ class Track:
 
 
 class TopArtist:
+    __slots__ = ["artist_id", "name", "selected", "top_track"]
+
     def __init__(self, artist: dict):
         self.artist_id = artist["id"]
         self.name = artist["name"]

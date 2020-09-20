@@ -4,6 +4,14 @@ from tinder.http import Http
 
 
 class Message(Entity):
+    __slots__ = ["_match_id",
+                 "content",
+                 "receiver_id",
+                 "_author_id",
+                 "sent_date",
+                 "timestamp",
+                 "created_date"]
+
     def __init__(self, http: Http, message: dict):
         super().__init__(http, message["_id"])
         self._match_id = message["match_id"]
