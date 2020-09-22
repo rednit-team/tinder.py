@@ -38,7 +38,7 @@ class User(Entity):
         if "spotify_theme_track" in user:
             self.theme_track: Track = Track(user["spotify_theme_track"])
 
-        if "photos" in user["instagram"]:
+        if "instagram" in user:
             self.instagram_info: InstagramInfo = InstagramInfo(user["instagram"])
 
     def distance_mi(self):
@@ -49,7 +49,7 @@ class User(Entity):
 
     def like(self):
         route = "/like/{}".format(self.entity_id)
-        self._http.get(route).json()
+        self._http.get(route)
 
     def dislike(self):
         route = "/pass/{}".format(self.entity_id)

@@ -10,8 +10,9 @@ class InstagramInfo:
         self.media_count = instagram["media_count"]
 
         photos = list()
-        for photo in instagram["photos"]:
-            photos.append(InstagramPhoto(photo))
+        if "photos" in instagram:
+            for photo in instagram["photos"]:
+                photos.append(InstagramPhoto(photo))
         self.photos: Tuple[InstagramPhoto, ...] = tuple(photos)
 
 

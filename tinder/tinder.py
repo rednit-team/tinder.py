@@ -1,3 +1,4 @@
+import logging
 from typing import Tuple
 
 from tinder.entities.match import Match
@@ -9,6 +10,8 @@ from tinder.entities.user import User
 class Tinder:
     def __init__(self, auth_token: str):
         self._http = Http(auth_token)
+        logging.getLogger().name = "tinder-py"
+        logging.getLogger().setLevel(logging.DEBUG)
 
     def retrieve_recommendations(self) -> Tuple[User, ...]:
         route = "/user/recs"
