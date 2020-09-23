@@ -3,6 +3,7 @@ from typing import Tuple
 
 from tinder.entities.match import Match
 from tinder.entities.message import Message
+from tinder.entities.self_user import SelfUser
 from tinder.http import Http
 from tinder.entities.user import User
 
@@ -54,3 +55,8 @@ class Tinder:
         route = "/message/{}".format(message_id)
         response = self._http.get(route).json()
         return Message(self._http, response)
+
+    def retrieve_self_user(self) -> SelfUser:
+        route = "/profile"
+        response = self._http.get(route).json()
+        return SelfUser(self._http, response)
