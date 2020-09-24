@@ -19,7 +19,7 @@ class Tinder:
         response = self._http.get(route).json()
         users = set()
         for result in response["results"]:
-            users.add(User(self._http, result["user"]))
+            users.add(User(self._http, result))
         return tuple(users)
 
     def retrieve_matches(self, count: int = 60, page_token: str = None) -> Tuple[Match, ...]:

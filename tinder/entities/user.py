@@ -2,9 +2,11 @@ from datetime import datetime
 from typing import Tuple
 
 from tinder.entities.entity import Entity
-from tinder.http import Http
-from tinder.entities.spotify import TopArtist, Track
+from tinder.entities.facebook import FacebookInfo
 from tinder.entities.instagram import InstagramInfo
+from tinder.entities.spotify import TopArtist, Track
+
+from tinder.http import Http
 
 
 class User(Entity):
@@ -16,8 +18,8 @@ class User(Entity):
         "gender",
         "show_gender_on_profile",
         "_distance",
-        "is_travelling",
         "is_tinder_u",
+        "facebook_info",
         "interests",
         "badges",
         "photos",
@@ -39,8 +41,8 @@ class User(Entity):
         self.gender = user["gender"]
         self.show_gender_on_profile = user["show_gender_on_profile"]
         self._distance = user["distance_mi"]
-        self.is_travelling = user["is_travelling"]
         self.is_tinder_u = user["is_tinder_u"]
+        self.facebook_info = FacebookInfo(user)
 
         interests = list()
         if "user_interests" in user:
@@ -74,8 +76,8 @@ class User(Entity):
             self.job_title = user["jobs"]["title"]["name"]
         if "company" in user["jobs"]:
             self.company = user["jobs"]["company"]["name"]
-        if "schools" in user:
-            self.school = user["schools"]["name"]
+        for school in user["schools"]:
+            self.school = school["name"]
         if "city" in user:
             self.city = user["city"]["name"]
 
